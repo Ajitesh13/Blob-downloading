@@ -5,8 +5,8 @@
 // 5. click event
 // 6. remove anchor tag and blob
 
-let download = document.getElementById('download');
-download.addEventListener('click', () => {
+let downloadbtn = document.getElementById('download');
+downloadbtn.addEventListener('click', () => {
     const blob = new Blob(['This is a new File'], {type: "text/plain"});
     downloadFile(blob, "newFile.txt");
 });
@@ -14,7 +14,9 @@ download.addEventListener('click', () => {
 function downloadFile(blob, filename) {
     const url = window.URL.createObjectURL(blob);
     const anchor = document.createElement("a");
+    // before click we need to add some prop to "a" tag
     anchor.href = url;
     anchor.download = filename;
+    // click event
     anchor.click();
 }
